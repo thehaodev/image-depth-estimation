@@ -21,11 +21,20 @@ def l2(x, y):
     return (x - y) * (x - y)
 
 
+def cosine_similarity(x, y):
+    numerator = np.dot(x, y)
+    denominator = np.linalg.norm(x) * np.linalg.norm(y)
+
+    return numerator / denominator
+
+
 def cost(x, y, cost_type):
     if cost_type == 1:
         return l1(x, y)
-    else:
+    elif cost_type == 2:
         return l2(x, y)
+    elif cost_type == 3:
+        return cosine_similarity(x, y)
 
 
 def prepare_image(left_img, right_img):
